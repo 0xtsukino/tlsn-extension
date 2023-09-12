@@ -7,7 +7,6 @@
     "url": "https://github.com/tlsnotary/tlsn-extension.git"
   },
   "scripts": {
-    "clone:tlsn": "bash ./utils/download-tlsn.sh",
     "build:wasm": "wasm-pack build --target web wasm/prover",
     "build": "NODE_ENV=production node utils/build.js",
     "dev": "NODE_ENV=development node utils/webserver.js",
