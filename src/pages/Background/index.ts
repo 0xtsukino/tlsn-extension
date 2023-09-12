@@ -1,7 +1,8 @@
 import { BackgroundActiontype, RequestLog } from './actionTypes';
-import { Mutex } from 'async-mutex';
 import NodeCache from 'node-cache';
 import { addRequest } from '../../reducers/requests';
+
+const { Mutex } = require('async-mutex');
 
 let RequestsLogs: {
   [tabId: string]: NodeCache;
@@ -38,7 +39,6 @@ chrome.tabs.onRemoved.addListener((tab) => {
       mutex.runExclusive(async () => {
         const { method, tabId, requestId } = details;
 
-        console.log('details', details);
         if (method !== 'OPTIONS') {
           RequestsLogs[tabId] =
             RequestsLogs[tabId] ||
